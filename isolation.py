@@ -29,25 +29,6 @@ data['TempRange'] = data['MaxTemp'] - data['MinTemp']
 features = pd.DataFrame(data, columns=numerical_cols)
 
 
-# Drop rows based on Z-score thresholds (as you provided)
-features = features[(features["MinTemp"] < 2.3) & (features["MinTemp"] > -2.3)]
-features = features[(features["MaxTemp"] < 2.3) & (features["MaxTemp"] > -2)]
-features = features[(features["Rainfall"] < 4.5)]
-features = features[(features["Evaporation"] < 2.8)]
-features = features[(features["Sunshine"] < 2.1)]
-features = features[(features["WindGustSpeed"] < 4) & (features["WindGustSpeed"] > -4)]
-features = features[(features["WindSpeed9am"] < 4)]
-features = features[(features["WindSpeed3pm"] < 2.5)]
-features = features[(features["Humidity9am"] > -3)]
-features = features[(features["Humidity3pm"] > -2.2)]
-features = features[(features["Pressure9am"] < 2) & (features["Pressure9am"] > -2.7)]
-features = features[(features["Pressure3pm"] < 2) & (features["Pressure3pm"] > -2.7)]
-features = features[(features["Cloud9am"] < 1.8)]
-features = features[(features["Cloud3pm"] < 2)]
-features = features[(features["Temp9am"] < 2.3) & (features["Temp9am"] > -2)]
-features = features[(features["Temp3pm"] < 2.3) & (features["Temp3pm"] > -2)]
-
-print(f"Cleaned data shape after dropping outliers: {features.shape}")
 
 from sklearn.ensemble import IsolationForest
 from sklearn.neighbors import LocalOutlierFactor
